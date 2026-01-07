@@ -11,11 +11,11 @@ simulate_ranks <- function(n1, n2, U_target, max_iter = 100000) {
   R1_target <- U_target + n1 * (n1 + 1) / 2
 
   for (i in 1:max_iter) {
-    group1_ranks <- sort(sample(total_ranks, n1, replace = FALSE))
+    group1_ranks <- sample(total_ranks, n1, replace = FALSE)
     if (sum(group1_ranks) == R1_target) {
       group2_ranks <- setdiff(total_ranks, group1_ranks)
       return(list(
-        group1_ranks = group1_ranks,
+        group1_ranks = sort(group1_ranks),
         group2_ranks = group2_ranks,
         U = U_target
       ))
@@ -34,11 +34,11 @@ simrank <- function(n1, n2, U_target, max_iter = 100000) {
   R1_target <- U_target + n1 * (n1 + 1) / 2
   
   for (i in 1:max_iter) {
-    group1_ranks <- sort(sample(total_ranks, n1, replace = FALSE))
+    group1_ranks <- sample(total_ranks, n1, replace = FALSE)
     if (sum(group1_ranks) == R1_target) {
       group2_ranks <- setdiff(total_ranks, group1_ranks)
       return(list(
-        group1_ranks = group1_ranks,
+        group1_ranks = sort(group1_ranks),
         group2_ranks = group2_ranks,
         U = U_target
       ))
